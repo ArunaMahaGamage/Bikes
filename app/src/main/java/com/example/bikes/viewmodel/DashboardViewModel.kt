@@ -1,4 +1,4 @@
-package com.example.bikes.fragment
+package com.example.bikes.viewmodel
 
 import android.content.Context
 import android.util.Log

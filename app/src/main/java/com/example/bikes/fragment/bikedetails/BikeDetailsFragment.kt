@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.bikes.R
+import com.example.bikes.viewmodel.BikeDetailsViewModel
 
 class BikeDetailsFragment : Fragment() {
 

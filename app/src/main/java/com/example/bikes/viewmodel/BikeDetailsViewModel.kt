@@ -1,4 +1,4 @@
-package com.example.bikes.fragment.bikedetails
+package com.example.bikes.viewmodel
 
 import androidx.lifecycle.ViewModel
 

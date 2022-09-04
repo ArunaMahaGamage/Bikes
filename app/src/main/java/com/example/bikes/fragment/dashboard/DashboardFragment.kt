@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.bikes.ContextAwareApplication
 import com.example.bikes.R
 import com.example.bikes.fragment.BaseFragment
-import com.example.bikes.fragment.DashboardViewModel
+import com.example.bikes.viewmodel.DashboardViewModel
 
 class DashboardFragment : BaseFragment() {
 
