@@ -13,5 +13,5 @@ public class Features {
     public String type;
 
     @SerializedName("properties")
-    public Properties properties;
+    public FeaturesProperties properties;
 }
