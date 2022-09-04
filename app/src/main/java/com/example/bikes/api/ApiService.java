@@ -1,7 +1,7 @@
 package com.example.bikes.api;
 
 
-import com.example.bikes.model.BikeStationsResponse;
+import com.example.bikes.model.bikestations.BikeStationsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

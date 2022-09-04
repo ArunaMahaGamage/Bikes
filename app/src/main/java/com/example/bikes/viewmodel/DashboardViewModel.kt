@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.bikes.api.ApiClient
 import com.example.bikes.api.ApiService
 import com.example.bikes.fragment.dashboard.DashboardFragment
-import com.example.bikes.model.BikeStationsResponse
+import com.example.bikes.model.bikestations.BikeStationsResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

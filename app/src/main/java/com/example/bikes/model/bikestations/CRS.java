@@ -1,4 +1,4 @@
-package com.example.bikes.model;
+package com.example.bikes.model.bikestations;
 
 import com.google.gson.annotations.SerializedName;
 
