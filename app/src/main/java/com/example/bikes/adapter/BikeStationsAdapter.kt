@@ -12,10 +12,6 @@ import com.bumptech.glide.Glide
 import com.example.bikes.R
 import com.example.bikes.model.bikestations.BikeStationsResponse
 
-/*
-class MedicalSpecialtiesAdapter {
-}*/
-
 class BikeStationsAdapter // Provide a suitable constructor (depends on the kind of dataset)
     (private val context: Context, private val onClickListener: (View, Int) -> Unit, private val onClickListenerInfo: (View, Int) -> Unit) :
     RecyclerView.Adapter<BikeStationsAdapter.ViewHolder>() {
@@ -29,12 +25,14 @@ class BikeStationsAdapter // Provide a suitable constructor (depends on the kind
         // each data item is just a string in this case
         var stationsConstraintLayout: ConstraintLayout
         var titleAdapterTextView: TextView
+        var bikeCountTextView: TextView
         var bgImage: ImageView
 
         init {
             stationsConstraintLayout = v.findViewById(R.id.stationsConstraintLayout)
             titleAdapterTextView = v.findViewById(R.id.titleAdapterTextView)
-            bgImage = v.findViewById(R.id.bgImage)
+            bikeCountTextView = v.findViewById(R.id.bikeCountTextView)
+            bgImage = v.findViewById(R.id.bikeImage)
         }
     }
 
@@ -50,7 +48,8 @@ class BikeStationsAdapter // Provide a suitable constructor (depends on the kind
 
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.titleAdapterTextView.text = bikeStationsResponse.features[position].id
+        holder.titleAdapterTextView.text = bikeStationsResponse.features[position].id + " " + bikeStationsResponse.features[position].properties.label
+        holder.bikeCountTextView.text = bikeStationsResponse.features[position].properties.free_racks
         holder.stationsConstraintLayout.setOnClickListener {view ->onClickListener.invoke(view, position)}
 
         Glide.with(context)
