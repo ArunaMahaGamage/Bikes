@@ -68,8 +68,10 @@ class BikeDetailsFragment : BaseFragment(), OnMapReadyCallback {
         mMap = googleMap
         // Add a marker in Sydney and move the camera
         // Add a marker in Sydney and move the camera
-        val TutorialsPoint = LatLng(21.0, 57.0)
-        mMap!!.addMarker(MarkerOptions().position(TutorialsPoint).title("Tutorialspoint.com"))
+        var latitude = viewModel.mutableLiveDataResult.value!!.geometry.coordinates[0].toDouble()
+        var longitude = viewModel.mutableLiveDataResult.value!!.geometry.coordinates[1].toDouble()
+        val TutorialsPoint = LatLng(latitude, longitude)
+        mMap!!.addMarker(MarkerOptions().position(TutorialsPoint).title(viewModel.mutableLiveDataResult.value!!.properties.label))
         mMap!!.moveCamera(CameraUpdateFactory.newLatLng(TutorialsPoint))
     }
 

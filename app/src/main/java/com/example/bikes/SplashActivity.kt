@@ -13,12 +13,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-//        Handler().postDelayed({ startApp() },2000)
-
-        iv_background = findViewById(R.id.imageView2);
-        iv_background.setOnClickListener {
-            startApp()
-        }
+        Handler().postDelayed({ startApp() },2000)
     }
 
     private fun startApp() {
