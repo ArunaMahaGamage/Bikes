@@ -9,6 +9,7 @@ import com.example.bikes.R
 import com.example.bikes.adapter.BikeStationsAdapter
 import com.example.bikes.databinding.DashboardFragmentBinding
 import com.example.bikes.fragment.BaseFragment
+import com.example.bikes.viewmodel.BikeDetailsViewModel
 import com.example.bikes.viewmodel.DashboardViewModel
 
 class DashboardFragment : BaseFragment() {
@@ -18,6 +19,7 @@ class DashboardFragment : BaseFragment() {
     }
 
     private lateinit var viewModel: DashboardViewModel
+    private lateinit var bikeDetailsViewModel: BikeDetailsViewModel
     private lateinit var mBinding: DashboardFragmentBinding
     private lateinit var adapter: BikeStationsAdapter
 
@@ -26,6 +28,7 @@ class DashboardFragment : BaseFragment() {
 
     override fun initViewModels() {
         viewModel = ViewModelProvider(this).get<DashboardViewModel>(DashboardViewModel::class.java)
+        bikeDetailsViewModel = ViewModelProvider(requireActivity()).get<BikeDetailsViewModel>(BikeDetailsViewModel::class.java)
         viewModel.initAPI(ContextAwareApplication.applicationContext(), "pub_transport", "stacje_rowerowe")
     }
 
@@ -48,7 +51,8 @@ class DashboardFragment : BaseFragment() {
     }
 
     private fun onClickListener(view: View, position: Int) {
-//        navigateTo(R.id.action_medical_specialties_fragment_to_doctorsFragment)
+        bikeDetailsViewModel.mutableLiveDataResult.value = viewModel.mutableLiveDataResult.value!!.features[position]
+        navigateTo(R.id.action_bike_dashboard_fragment_to_bike_details_fragment)
 //        startNewsDetails(position)
     }
 
