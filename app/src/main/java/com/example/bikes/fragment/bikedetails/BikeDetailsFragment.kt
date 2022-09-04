@@ -42,14 +42,12 @@ class BikeDetailsFragment : BaseFragment() {
 
         Glide.with(ContextAwareApplication.applicationContext())
             .load(R.drawable.ic_bike)
-//            .load(bikeStationsResponse.features[position].urlToImage)
             .centerCrop()
             .placeholder(R.drawable.background_gradient)
             .into(mBinding.bikeImage)
 
         Glide.with(ContextAwareApplication.applicationContext())
             .load(R.drawable.ic_lock)
-//            .load(bikeStationsResponse.features[position].urlToImage)
             .centerCrop()
             .placeholder(R.drawable.background_gradient)
             .into(mBinding.lockImage)
