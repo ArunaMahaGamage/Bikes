@@ -1,20 +1,22 @@
 package com.example.bikes.fragment.bikedetails
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.bikes.ContextAwareApplication
 import com.example.bikes.R
 import com.example.bikes.databinding.BikeDetailsFragmentBinding
 import com.example.bikes.fragment.BaseFragment
 import com.example.bikes.viewmodel.BikeDetailsViewModel
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
-class BikeDetailsFragment : BaseFragment() {
+
+class BikeDetailsFragment : BaseFragment(), OnMapReadyCallback {
 
     companion object {
         fun newInstance() = BikeDetailsFragment()
@@ -22,6 +24,8 @@ class BikeDetailsFragment : BaseFragment() {
 
     private lateinit var viewModel: BikeDetailsViewModel
     private lateinit var mBinding: BikeDetailsFragmentBinding
+    private var mMap: GoogleMap? = null
+
     override var layoutID: Int = R.layout.bike_details_fragment
 
 
@@ -32,6 +36,9 @@ class BikeDetailsFragment : BaseFragment() {
     override fun initBinding() {
         mBinding = mBindingRoot as BikeDetailsFragmentBinding
 //        mBinding.viewmodel = viewModel
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
     override fun initObservers() {
@@ -55,6 +62,15 @@ class BikeDetailsFragment : BaseFragment() {
 
     override fun fragmentTag(): String {
         return "BikeDetailsFragment"
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+        // Add a marker in Sydney and move the camera
+        // Add a marker in Sydney and move the camera
+        val TutorialsPoint = LatLng(21.0, 57.0)
+        mMap!!.addMarker(MarkerOptions().position(TutorialsPoint).title("Tutorialspoint.com"))
+        mMap!!.moveCamera(CameraUpdateFactory.newLatLng(TutorialsPoint))
     }
 
 }
