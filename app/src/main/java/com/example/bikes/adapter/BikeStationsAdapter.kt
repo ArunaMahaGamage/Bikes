@@ -27,12 +27,16 @@ class BikeStationsAdapter // Provide a suitable constructor (depends on the kind
         var titleAdapterTextView: TextView
         var bikeCountTextView: TextView
         var bgImage: ImageView
+        var availablePlacesCountTextView: TextView
+        var lockImage: ImageView
 
         init {
             stationsConstraintLayout = v.findViewById(R.id.stationsConstraintLayout)
             titleAdapterTextView = v.findViewById(R.id.titleAdapterTextView)
             bikeCountTextView = v.findViewById(R.id.bikeCountTextView)
             bgImage = v.findViewById(R.id.bikeImage)
+            availablePlacesCountTextView = v.findViewById(R.id.availablePlacesCountTextView)
+            lockImage = v.findViewById(R.id.lockImage)
         }
     }
 
@@ -49,7 +53,9 @@ class BikeStationsAdapter // Provide a suitable constructor (depends on the kind
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.titleAdapterTextView.text = bikeStationsResponse.features[position].id + " " + bikeStationsResponse.features[position].properties.label
-        holder.bikeCountTextView.text = bikeStationsResponse.features[position].properties.free_racks
+        holder.bikeCountTextView.text = bikeStationsResponse.features[position].properties.bike_racks
+
+        holder.availablePlacesCountTextView.text = bikeStationsResponse.features[position].properties.free_racks
         holder.stationsConstraintLayout.setOnClickListener {view ->onClickListener.invoke(view, position)}
 
         Glide.with(context)
@@ -58,6 +64,13 @@ class BikeStationsAdapter // Provide a suitable constructor (depends on the kind
             .centerCrop()
             .placeholder(R.drawable.background_gradient)
             .into(holder.bgImage)
+
+        Glide.with(context)
+            .load(R.drawable.ic_lock)
+//            .load(bikeStationsResponse.features[position].urlToImage)
+            .centerCrop()
+            .placeholder(R.drawable.background_gradient)
+            .into(holder.lockImage)
     }
 
     override fun getItemCount(): Int {
